@@ -1,28 +1,40 @@
 import React, { Component } from 'react';
+import Projects from './Projects';
+import SocialProfiles from './SocialProfile';
+import profile from './assets/profile.png'
 
 class App extends Component {
-  constructor(){
-    super();
-    this.state = {
-      counter: 0
-    }
-    this.addCounter = this.addCounter.bind(this)
+  state = {
+    displayBio: false
   }
 
-  addCounter() {
+  toggleDisplayBio = () => {
     this.setState({
-      counter:this.state.counter + 1
-    });
+      displayBio: !this.state.displayBio
+    })
   }
 
   render() {
     return (
       <div>
+        <img src={profile} alt="profileimage" className="profile"/>
         <h1>Meu Portifolio</h1>
-        <p>Ola meu nome é Alexandre</p>
-        <p>Analista desenvolvedor PL na Linx</p>
-        <p>{ this.state.counter }</p>
-        <button onClick={this.addCounter}>Adicionar contador</button>
+        {
+          this.state.displayBio ? (
+            <div>
+              <p>Ola meu nome é Alexandre</p>
+              <p>Analista desenvolvedor PL na Linx</p>
+              <button onClick={this.toggleDisplayBio}>Ver menos</button>
+            </div>
+          ) : (
+            <div>
+              <button onClick={this.toggleDisplayBio}>Ver mais</button>
+            </div>
+          )
+        }
+        <hr />
+        <Projects />
+        <SocialProfiles />
       </div>
     )
   }
