@@ -42,6 +42,12 @@ p {
     animation-duration: 2s;
 }
 
+.headerLink {
+    display: inline-block;
+    margin: 10px;
+    margin-bottom: 30px;
+}
+
 @keyframes fade-out {
     from { opacity: 100 }
     to { opacity: 0 }
